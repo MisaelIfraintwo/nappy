@@ -9,12 +9,14 @@ public class enemystats : MonoBehaviour
 
     public float vidaTotal;
 
+    public GameObject particle;
     public void Start()
     {
         vidaTotal = life;
     }
     public void Dañotake(float daño) {
-
+        GameObject effect = Instantiate (particle,transform.position,Quaternion.identity);
+        Destroy(effect, effect.GetComponent<ParticleSystem>().main.duration);
         life -= daño;
         UpdateBarraVida();
         if (life <= 0 )

@@ -20,5 +20,8 @@ public class enemy : MonoBehaviour
     public void Update()
     {
         agent.SetDestination(jugador.position);
+        Vector3 directiontoplayer = jugador.position - transform.position;
+        Quaternion lookrotation = Quaternion.LookRotation(-directiontoplayer);
+        transform.rotation = Quaternion.Slerp(transform.rotation,lookrotation,Time.deltaTime* 5f);
     }
 }
